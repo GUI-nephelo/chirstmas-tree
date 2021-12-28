@@ -6,6 +6,6 @@
   <script>
     var a=["王仲琪","马靖尧","王浩琪","王晨"];
     var startTime=1640620800;
-    document.write("今天值日生是："+a[Math.floor((Date.now()*0.001-startTime)/86400)%4]);
+    document.write("<h1>今天值日生是："+a[Math.floor((Date.now()*0.001-startTime)/(2*86400))%4]+"</h1>");
   </script>
 </html>
