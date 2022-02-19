@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>link</title>
+</head>
+<body>
+    <p>要加密的URL:</p><input id="in"/>
+    <p>加密后的URL：</p><p id="out" onclick="location.href=$(this).text()"></p>
+    <button onclick="gen()">生成</button>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+<script>
+var s=window.location.search.slice(1);
+var searchs=Object()
+for(i in s.split("&")){
+    o = s.split("&")[i].split("=");
+    searchs[o[0]]=o[1];
+}
+
+if("t" in searchs){
+    t = escape(decodeURI(searchs["t"])).split("%u").slice(1)
+    o=""
+    for(i in t) 
+        o+=String.fromCharCode(eval("0x"+t[i].slice(0,2)))+String.fromCharCode(eval("0x"+t[i].slice(2,4)))
+    alert("将跳转到"+o)
+    if(o!="") window.location.href=o
+}
+
+function gen(){
+    l=[""]
+    var url = $("#in").val();
+    for(i=0;i<url.length;i+=2) 
+        l.push(url.charCodeAt(i).toString(16)+(i+1<url.length?url.charCodeAt(i+1).toString(16):"00"));
+    o=unescape(l.join("%u"));
+    $("#out").text(location.href+'?t='+o)
+}
+
+</script>
+
+</html>
