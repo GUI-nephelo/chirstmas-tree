@@ -3,9 +3,13 @@
     <title>link</title>
 </head>
 <body>
-    <p>要加密的URL:</p><input id="in"/>
-    <p>加密后的URL：</p><p id="out" onclick="location.href=$(this).text()"></p>
-    <button onclick="gen()">生成</button>
+    <div id="gen">
+        <p>要加密的URL:</p><input id="in"/>
+        <p>加密后的URL：</p><p id="out" onclick="location.href=$(this).text()"></p>
+        <button onclick="gen()">生成</button>
+    </div>
+    <iframe style=""></iframe>
+    
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
@@ -23,7 +27,12 @@ if("t" in searchs){
     for(i in t) 
         o+=String.fromCharCode(eval("0x"+t[i].slice(0,2)))+String.fromCharCode(eval("0x"+t[i].slice(2,4)))
     alert("将跳转到"+o)
-    if(o!="") window.location.href=o
+    if(o!="") {
+        //window.location.href=o
+        var frame = document.createElement("iframe");
+        frame.setAttribute("src",o)
+
+    }
 }
 
 function gen(){
