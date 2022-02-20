@@ -1,4 +1,4 @@
-<html>
+<!DOCTYPE html>
 <head>
     <title>link</title>
 </head>
@@ -8,7 +8,7 @@
         <p>加密后的URL：</p><p id="out" onclick="location.href=$(this).text()"></p>
         <button onclick="gen()">生成</button>
     </div>
-    <iframe style=""></iframe>
+    <iframe style="width: 100%;height: 100%;position: absolute;top: 0;left: 0;z-index: 2;"></iframe>
     
 </body>
 
@@ -29,8 +29,8 @@ if("t" in searchs){
     alert("将跳转到"+o)
     if(o!="") {
         //window.location.href=o
-        var frame = document.createElement("iframe");
-        frame.setAttribute("src",o)
+        $("iframe").attr("src",o);
+        $("div").hide();
 
     }
 }
