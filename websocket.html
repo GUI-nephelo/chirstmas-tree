@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        websocket test
+    </title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+<body>
+    send:<input/><button onclick="send()">send</button>
+</br>
+    <div id="output"></div>
+</body>
+<script>
+    var url = "";
+    var ws;
+
+    function logs(w){
+        a=document.querySelector("#output");
+        a.innerText+="\n"+ w;
+    }
+
+
+    async function main(){
+        while(1){
+            try{
+                while(url=="") url=prompt("请输入ws链接:")
+                ws = new WebSocket(url);
+                ws.onopen = () => {
+                    logs("Successfully connectted!!!");
+                }
+                await new Promise((req)=>{
+                    ws.onclose=()=>{req()}
+                })
+            }catch(e){
+                logs(e)
+                url = "";
+            }
+        }
+    
+    }
+    window.onload = main;
+
+    
+</script>
+</html>
