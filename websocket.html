@@ -19,7 +19,7 @@
         a.innerText+="\n"+ w;
     }
 
-
+    if(typeof(EventSource)=="function") alert("have EventSource")
     async function main(){
         while(1){
             try{
