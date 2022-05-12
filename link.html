@@ -28,8 +28,8 @@ if("t" in searchs){
         o+=String.fromCharCode(eval("0x"+t[i].slice(0,2)))+String.fromCharCode(eval("0x"+t[i].slice(2,4)))
     alert("将跳转到"+o)
     if(o!="") {
-        //window.location.href=o
-        $("iframe").attr("src",o).show();
+        window.location.href=o
+        //$("iframe").attr("src",o).show();
     }
 }
 
