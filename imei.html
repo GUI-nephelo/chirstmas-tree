@@ -1,0 +1,13 @@
+<html>
+    <script>
+        if(getMobileId in navigator){
+            navigator.getMobileId().then(
+                imei=>{
+                    document.write(imei)
+                }
+            )
+        }else{
+            document.write("不支持IMEI获取")
+        }
+    </script>
+</html>
